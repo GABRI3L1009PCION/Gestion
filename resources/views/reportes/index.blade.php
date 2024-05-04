@@ -43,45 +43,40 @@
                         </div>
                     </nav>
 
-            <!-- Main Content -->
+            <!-- Main content -->
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <h1>Lista de Usuarios</h1>
-                <a href="{{ route('usuarios.create') }}" class="btn btn-primary mb-3">Crear Nuevo Usuario</a>
-
-                @if ($usuarios->isEmpty())
-                    <p>No hay usuarios registrados en el sistema.</p>
-                @else
-                    <table class="table">
+                <div class="container">
+                    <h1>Reportes</h1>
+                    <a href="{{ route('reportes.create') }}" class="btn btn-primary">Crear Nuevo Reporte</a>
+                    <table class="table table-striped">
                         <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Nombre</th>
-                            <th>Email</th>
+                            <th>Tipo de Reporte</th>
+                            <th>Fecha</th>
+                            <th>Datos</th>
                             <th>Acciones</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach ($usuarios as $usuario)
+                        @foreach ($reportes as $reporte)
                             <tr>
-                                <td>{{ $usuario->id }}</td>
-                                <td>{{ $usuario->nombre }}</td>
-                                <td>{{ $usuario->email }}</td>
+                                <td>{{ $reporte->tipo_reporte }}</td>
+                                <td>{{ $reporte->fecha ? $reporte->fecha->format('d/m/Y') : 'N/A' }}</td>
+                                <td>{{ json_encode($reporte->datos) }}</td>
                                 <td>
-                                    <div class="btn-group" role="group">
-                                        <a href="{{ route('usuarios.show', $usuario->id) }}" class="btn btn-info btn-sm">Ver</a>
-                                        <a href="{{ route('usuarios.edit', $usuario->id) }}" class="btn btn-warning btn-sm">Editar</a>
-                                        <form action="{{ route('usuarios.destroy', $usuario->id) }}" method="POST" style="display:inline;">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de querer eliminar este usuario?')">Eliminar</button>
-                                        </form>
-                                    </div>
+                                    <a href="{{ route('reportes.show', $reporte->id) }}" class="btn btn-info">Ver</a>
+                                    <a href="{{ route('reportes.edit', $reporte->id) }}" class="btn btn-warning">Editar</a>
+                                    <form action="{{ route('reportes.destroy', $reporte->id) }}" method="POST" style="display: inline;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
                         </tbody>
                     </table>
-                @endif
+                </div>
             </main>
         </div>
     </div>

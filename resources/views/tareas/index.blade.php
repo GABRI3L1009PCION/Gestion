@@ -42,46 +42,44 @@
                             </ul>
                         </div>
                     </nav>
-
-            <!-- Main Content -->
+            <!-- Main content -->
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <h1>Lista de Usuarios</h1>
-                <a href="{{ route('usuarios.create') }}" class="btn btn-primary mb-3">Crear Nuevo Usuario</a>
-
-                @if ($usuarios->isEmpty())
-                    <p>No hay usuarios registrados en el sistema.</p>
-                @else
-                    <table class="table">
+                <div class="container">
+                    <h1>Tareas</h1>
+                    <a href="{{ route('tareas.create') }}" class="btn btn-primary">Crear Nueva Tarea</a>
+                    <table class="table table-striped">
                         <thead>
                         <tr>
-                            <th>ID</th>
                             <th>Nombre</th>
-                            <th>Email</th>
+                            <th>Descripción</th>
+                            <th>Estado</th>
+                            <th>Fecha Inicio</th>
+                            <th>Fecha Fin</th>
                             <th>Acciones</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach ($usuarios as $usuario)
+                        @foreach ($tareas as $tarea)
                             <tr>
-                                <td>{{ $usuario->id }}</td>
-                                <td>{{ $usuario->nombre }}</td>
-                                <td>{{ $usuario->email }}</td>
+                                <td>{{ $tarea->nombre }}</td>
+                                <td>{{ $tarea->descripcion }}</td>
+                                <td>{{ $tarea->estado }}</td>
+                                <td>{{ $tarea->fecha_inicio ? $tarea->fecha_inicio->format('d/m/Y') : 'N/A' }}</td>
+                                <td>{{ $tarea->fecha_fin ? $tarea->fecha_fin->format('d/m/Y') : 'N/A' }}</td>
                                 <td>
-                                    <div class="btn-group" role="group">
-                                        <a href="{{ route('usuarios.show', $usuario->id) }}" class="btn btn-info btn-sm">Ver</a>
-                                        <a href="{{ route('usuarios.edit', $usuario->id) }}" class="btn btn-warning btn-sm">Editar</a>
-                                        <form action="{{ route('usuarios.destroy', $usuario->id) }}" method="POST" style="display:inline;">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de querer eliminar este usuario?')">Eliminar</button>
-                                        </form>
-                                    </div>
+                                    <a href="{{ route('tareas.show', $tarea->id) }}" class="btn btn-info">Ver</a>
+                                    <a href="{{ route('tareas.edit', $tarea->id) }}" class="btn btn-warning">Editar</a>
+                                    <form action="{{ route('tareas.destroy', $tarea->id) }}" method="POST" style="display: inline-block;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
                         </tbody>
                     </table>
-                @endif
+                </div>
             </main>
         </div>
     </div>

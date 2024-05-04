@@ -45,7 +45,7 @@ class UsuarioController extends Controller
     {
         $usuario = Usuario::with('roles')->findOrFail($id);
         $roles = Role::all();
-        dd($usuario, $roles);  // Verificar los datos obtenidos
+        // dd($usuario, $roles);  // Línea comentada para evitar la detención de la ejecución
         return view('usuarios.edit', compact('usuario', 'roles'));
     }
 

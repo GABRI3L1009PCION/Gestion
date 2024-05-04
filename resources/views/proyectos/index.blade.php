@@ -45,42 +45,46 @@
 
             <!-- Main Content -->
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <h1>Lista de Usuarios</h1>
-                <a href="{{ route('usuarios.create') }}" class="btn btn-primary mb-3">Crear Nuevo Usuario</a>
+                <h1>Lista de Proyectos</h1>
+                <a href="{{ route('proyectos.create') }}" class="btn btn-primary mb-3">Crear Nuevo Proyecto</a>
 
-                @if ($usuarios->isEmpty())
-                    <p>No hay usuarios registrados en el sistema.</p>
+                @if ($proyectos->isEmpty())
+                    <p>No hay proyectos registrados.</p>
                 @else
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nombre</th>
-                            <th>Email</th>
-                            <th>Acciones</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach ($usuarios as $usuario)
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
                             <tr>
-                                <td>{{ $usuario->id }}</td>
-                                <td>{{ $usuario->nombre }}</td>
-                                <td>{{ $usuario->email }}</td>
-                                <td>
-                                    <div class="btn-group" role="group">
-                                        <a href="{{ route('usuarios.show', $usuario->id) }}" class="btn btn-info btn-sm">Ver</a>
-                                        <a href="{{ route('usuarios.edit', $usuario->id) }}" class="btn btn-warning btn-sm">Editar</a>
-                                        <form action="{{ route('usuarios.destroy', $usuario->id) }}" method="POST" style="display:inline;">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de querer eliminar este usuario?')">Eliminar</button>
-                                        </form>
-                                    </div>
-                                </td>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Descripción</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
                             </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                            @foreach ($proyectos as $proyecto)
+                                <tr>
+                                    <td>{{ $proyecto->id }}</td>
+                                    <td>{{ $proyecto->nombre }}</td>
+                                    <td>{{ $proyecto->descripcion }}</td>
+                                    <td>{{ $proyecto->estado }}</td>
+                                    <td>
+                                        <div class="btn-group" role="group">
+                                            <a href="{{ route('proyectos.show', $proyecto) }}" class="btn btn-info btn-sm">Ver</a>
+                                            <a href="{{ route('proyectos.edit', $proyecto) }}" class="btn btn-warning btn-sm">Editar</a>
+                                            <form action="{{ route('proyectos.destroy', $proyecto) }}" method="POST" style="display:inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de querer eliminar este proyecto?')">Eliminar</button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 @endif
             </main>
         </div>

@@ -39,4 +39,10 @@ Route::get('/auditorias', [AuditoriaController::class, 'index'])->name('auditori
 
 Route::resource('usuarios', UsuarioController::class);
 Route::get('/usuarios/{id}/edit', 'UsuarioController@edit')->name('usuarios.edit');
+Route::resource('tareas', 'TareaController');
+Route::resource('proyectos', ProyectoController::class);
+Route::get('tareas/{tarea}', [TareaController::class, 'show'])->name('tareas.show');
+Route::resource('tareas', TareaController::class);
+Route::resource('reportes', ReporteController::class);
+
 

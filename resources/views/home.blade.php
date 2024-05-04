@@ -19,44 +19,41 @@
     <div class="container-fluid">
         <div class="row">
             <!-- Sidebar -->
-            <!-- Sidebar -->
-            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-white sidebar collapse">
                 <div class="position-sticky pt-3 sidebar-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{{ route('proyectos.index') }}">
-                                <span data-feather="file-text"></span>
+                            <a class="nav-link" href="{{ route('home') }}" style="text-transform: uppercase; color: black; background-color: white; font-weight: bold; font-size: 1.2em;">
+                                Inicio
+                            </a>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{{ route('proyectos.index') }}" style="text-transform: uppercase; color: black; background-color: white; font-weight: bold; font-size: 1.2em;">
                                 Proyectos
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('tareas.index') }}">
-                                <span data-feather="check-square"></span>
+                            <a class="nav-link" href="{{ route('tareas.index') }}" style="text-transform: uppercase; color: black; background-color: white; font-weight: bold; font-size: 1.2em;">
                                 Tareas
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('reportes.index') }}">
-                                <span data-feather="bar-chart-2"></span>
+                            <a class="nav-link" href="{{ route('reportes.index') }}" style="text-transform: uppercase; color: black; background-color: white; font-weight: bold; font-size: 1.2em;">
                                 Reportes
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('usuarios.index') }}">
-                                <span data-feather="users"></span>
+                            <a class="nav-link" href="{{ route('usuarios.index') }}" style="text-transform: uppercase; color: black; background-color: white; font-weight: bold; font-size: 1.2em;">
                                 Usuarios
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('auditorias.index') }}">
-                                <span data-feather="activity"></span>
+                            <a class="nav-link" href="{{ route('auditorias.index') }}" style="text-transform: uppercase; color: black; background-color: white; font-weight: bold; font-size: 1.2em;">
                                 Auditorías
                             </a>
                         </li>
                     </ul>
                 </div>
             </nav>
-
 
             <!-- Main Content -->
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
@@ -71,7 +68,7 @@
                             <div class="card-body">
                                 <div class="card-title">Proyectos</div>
                                 <h1>7</h1>
-                                <a href="#" class="stretched-link text-white">Ir al Módulo</a>
+                                <a href="{{ route('proyectos.index') }}" class="stretched-link text-white">Ir al Módulo</a>
                             </div>
                         </div>
                     </div>
@@ -80,7 +77,7 @@
                             <div class="card-body">
                                 <div class="card-title">Tareas</div>
                                 <h1>19</h1>
-                                <a href="#" class="stretched-link text-white">Ir al Módulo</a>
+                                <a href="{{ route('tareas.index') }}" class="stretched-link text-white">Ir al Módulo</a>
                             </div>
                         </div>
                     </div>
@@ -89,16 +86,16 @@
                             <div class="card-body">
                                 <div class="card-title">Reportes</div>
                                 <h1>19</h1>
-                                <a href="#" class="stretched-link text-white">Ir al Módulo</a>
+                                <a href="{{ route('reportes.index') }}" class="stretched-link text-white">Ir al Módulo</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3 mb-3">
                         <div class="card text-white bg-success">
                             <div class="card-body">
-                                <div class="card-title">Auditorias</div>
+                                <div class="card-title">Auditorías</div>
                                 <h1>23</h1>
-                                <a href="#" class="stretched-link text-white">Ir al Módulo</a>
+                                <a href="{{ route('auditorias.index') }}" class="stretched-link text-white">Ir al Módulo</a>
                             </div>
                         </div>
                     </div>
@@ -125,24 +122,44 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <!-- Sample row -->
+                            <tr>
+                                <td>1</td>
+                                <td>Transporte</td>
+                                <td>Del Monte</td>
+                                <td>01/05/2024</td>
+                                <td>20/07/2024</td>
+                                <td>25/08/2024</td>
+                                <td>53,000.00</td>
+                                <td>0.00</td>
+                                <td><span class="badge bg-danger">pendiente</span></td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>Mineduc</td>
+                                <td>Ministerio Gua</td>
+                                <td>05/05/2024</td>
+                                <td>01/06/2024</td>
+                                <td>02/06/2024</td>
+                                <td>25,000.00</td>
+                                <td>3,000.00</td>
+                                <td><span class="badge bg-warning">En Proceso</span></td>
+                            </tr>
                             <tr>
                                 <td>1</td>
                                 <td>Gestor Proyectos</td>
                                 <td>Empornac</td>
-                                <td>01/05/2024</td>
-                                <td>20/07/2024</td>
-                                <td>01/05/2024</td>
-                                <td>53,000.00</td>
+                                <td>01/04/2024</td>
+                                <td>03/05/2024</td>
+                                <td>05/05/2024</td>
+                                <td>125,100.00</td>
                                 <td>0.00</td>
-                                <td><span class="badge bg-danger">pendiente</span></td>
+                                <td><span class="badge bg-success">Terminado</span></td>
                             </tr>
                             <!-- Add more rows as needed -->
                             </tbody>
                         </table>
                     </div>
                 </div>
-
             </main>
         </div>
     </div>
